@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+
+<body>
+    <script>
+        function getComputerChoice() {
+            if (Math.floor(Math.random() * 3) + 1===1)
+            return "Rock";
+            else if (Math.floor(Math.random() * 3) + 1===2)
+            return "Paper";
+            else 
+            return "Scissors"
+
+        }
+        function getPlayerSelection(){
+            let choice=prompt('Choose your weapon').toUpperCase();
+            if (choice!=null)
+                return choice;
+            
+
+        }
+        function playRound(playerSelection, computerSelection) {
+  
+            if (playerSelection===computerSelection)
+            return "Draw";
+
+            else if (playerSelection==='ROCK' && computerSelection==='PAPER')
+            return "You Lose! Paper beats Rock "
+            else if (playerSelection==='ROCK' && computerSelection==='SCISSORS')
+            return "You Win! Rock beats Scissors "
+
+            else if (playerSelection==='PAPER' && computerSelection==='SCISSORS')
+            return "You Lose! Scissors beats Paper "
+            else if (playerSelection==='PAPER' && computerSelection==='ROCK')
+            return "You Win! Paper beats Rock "
+
+            else if (playerSelection==='SCISSORS' && computerSelection==='ROCK')
+            return "You Lose! Rock beats Scissors "
+            else if (playerSelection==='SCISSORS' && computerSelection==='PAPER')
+            return "You Win! Scissors beats Paper "
+            else
+            return "Bad input"
+
+
+        }
+
+        
+        
+        function game(){
+            n=0;
+            w=0;
+            l=0;
+            while (n<5){
+                let computerSelection = getComputerChoice().toUpperCase();
+                let playerSelection=getPlayerSelection();
+                let message=playRound(playerSelection, computerSelection);
+                console.log(message);
+                n++;
+                
+                if (message.slice(0,5)==='You W'){
+                    w++;
+                }
+                else if (message.slice(0,5)==='You L'){
+                    l++;
+                }
+            
+            }
+            if (w>l) console.log("pobednik")
+            if (w===l) console.log('nereseno')
+            if (w<l) console.log('gubitnik')
+
+        }
+        console.log(game());
+
+
+
+
+    </script>
+
+</body>
+
+</html>
